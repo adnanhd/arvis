@@ -1,0 +1,227 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Nevis</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="styles.css">
+        <script src="https://kit.fontawesome.com/3b5add5527.js" crossorigin="anonymous"></script>
+
+
+
+    </head>
+    <body onload="draw()" >
+
+        
+       <div class="container-row-1">
+        <form class="form-1" onsubmit="queryAction(); return false" id="query-form">
+            Enter your query:<br>
+            <input type="text" name="query" id="queryID"> <br><br>
+            <button type="submit" class="btn btn-dark">Submit</button>
+            
+            <!-- <input type="submit" value="Submit"> -->
+        </form>
+
+        <form  id="query-hop" onsubmit="hopQueryAction();return false"> 
+            # of hops:<br>
+            <input type="text" name="hop-query" id="hop-queryID"> <br><br>
+            <button type="submit" class="btn btn-dark">Submit</button>
+
+            <!-- <input type="submit" value="Submit"> -->
+        </form>
+
+
+        <form  onsubmit="datesSubmit(); return false">
+
+            <div class="dates">
+
+                <div >
+                    Start Date <br>
+                    <input id="startDate" type="date">
+                </div>
+        
+                <div >
+                    End Date <br>
+                    <input id="endDate"  type="date">
+                </div>
+
+                <button id="dateSubmitButton" type="submit" class="btn btn-dark" >Submit</button>
+
+            </div>
+
+
+        </form>
+
+
+
+       </div>
+
+       
+       
+       <div class="container-row-2">
+            <div class="graph" id="viz"></div>
+
+            
+            <div class="value-display-container" >
+
+                <div  id="object-content">
+                    <div id="clicked-data">
+                        
+                    </div>
+                    <a href="#" id="url">
+                        
+                    </a>
+                    <div id="wikiInfo">
+                
+                    </div>
+                </div>
+
+
+        
+                <div class="checkbox-container">
+
+
+                    <div class="entity-related">
+
+                        <label class="bold" >Show Also</label>
+                        <div class="checkbox-detail-container">
+                            <input value="people" type="checkbox" id="alsoBreakingNews" onclick="showAlsoCheckboxFunctions()">
+                            <label for="people">Breaking News</label>
+                            <!-- <div class="box people"></div> -->
+                        </div>
+                        <div style="margin-bottom: 2vh;" class="checkbox-detail-container">
+                            <input value="location" type="checkbox" id="alsoSocialMedia" onclick="showAlsoCheckboxFunctions()">
+                            <label for="location">Social Media News</label>
+                            <!-- <div class="box location"></div> -->
+                        </div>
+
+
+
+                        <label class="bold" >Entity Types</label>
+                        <div class="checkbox-detail-container">
+                            <input value="people" type="checkbox" id="peopleCheckbox" onclick="checkboxFunction()">
+                            <label for="people">People</label>
+                            <div class="box people"></div>
+                        </div>
+                        <div class="checkbox-detail-container">
+                            <input value="location" type="checkbox" id="locationCheckbox" onclick="checkboxFunction()">
+                            <label for="location">Location</label>
+                            <div class="box location"></div>
+                        </div>
+                        <div class="checkbox-detail-container">
+                            <input value="money" type="checkbox" id="moneyCheckbox" onclick="checkboxFunction()">
+                            <label for="money">Money</label>
+                            <div class="box money"></div>
+                        </div>
+                        <div class="checkbox-detail-container">
+                            <input value="time" type="checkbox" id="timeCheckbox" onclick="checkboxFunction()"> 
+                            <label for="time">Time</label>
+                            <div class="box time"></div>
+                        </div>
+                        <div class="checkbox-detail-container">
+                            <input value="organization" type="checkbox" id="organizationCheckbox" onclick="checkboxFunction()"> 
+                            <label for="organization">Organization</label>
+                            <div class="box organization"></div>
+                        </div>
+                        <div class="checkbox-detail-container">
+                            <input value="organization" type="checkbox" id="dateCheckbox" onclick="checkboxFunction()"> 
+                            <label for="organization">Date</label>
+                            <div class="box date"></div>
+                        </div>
+                        
+
+                    </div>
+
+
+                    <div class="news-related">
+                        <label class="bold" >News Types</label>
+                        <div class="checkbox-detail-container">
+                            <input  value="son-dakika" type="checkbox" id="son-dakika-checkbox" onclick="newsCheckboxFunction()"> 
+                            <label for="son-dakika" >Breaking News</label>
+                            <div class="box son-dakika"></div>
+                        </div>
+                        <div class="checkbox-detail-container">
+                            <input   type="checkbox" id="social-media-checkbox" onclick="newsCheckboxFunction()"> 
+                            <label  >Social Media News</label>
+                            <div class="box social-media"></div>
+                        </div>
+                        <div class="checkbox-detail-container">
+                            <input   type="checkbox" id="economy-checkbox" onclick="newsCheckboxFunction()"> 
+                            <label >Economy</label>
+                            <div class="box ekonomi"></div>
+                        </div>
+                        <div class="checkbox-detail-container">
+                            <input   type="checkbox" id="gundem-checkbox" onclick="newsCheckboxFunction()"> 
+                            <label >Popular</label>
+                            <div class="box gundem"></div>
+                        </div>
+                        <div class="checkbox-detail-container">
+                            <input   type="checkbox" id="world-checkbox" onclick="newsCheckboxFunction()"> 
+                            <label >World</label>
+                            <div class="box dunya"></div>
+                        </div>
+                        <div class="checkbox-detail-container">
+                            <input   type="checkbox" id="country-checkbox" onclick="newsCheckboxFunction()"> 
+                            <label >Country</label>
+                            <div class="box yurttan-haberler"></div>
+                        </div>
+                        <div class="checkbox-detail-container">
+                            <input   type="checkbox" id="financial-checkbox" onclick="newsCheckboxFunction()"> 
+                            <label >Financial</label>
+                            <div class="box haberler-finans"></div>
+                        </div>
+                        <div class="checkbox-detail-container">
+                            <input   type="checkbox" id="corporations-checkbox" onclick="newsCheckboxFunction()"> 
+                            <label >Corporations</label>
+                            <div class="box sirketler"></div>
+                        </div>
+                        <div class="checkbox-detail-container">
+                            <input   type="checkbox" id="technology-checkbox" onclick="newsCheckboxFunction()"> 
+                            <label >Technology</label>
+                            <div class="box teknoloji"></div>
+                        </div>
+                        <div class="checkbox-detail-container">
+                            <input   type="checkbox" id="agriculture-checkbox" onclick="newsCheckboxFunction()"> 
+                            <label >Agriculture</label>
+                            <div class="box tarım"></div>
+                        </div>
+                        <div class="checkbox-detail-container">
+                            <input   type="checkbox" id="tourism-checkbox" onclick="newsCheckboxFunction()"> 
+                            <label >Tourism</label>
+                            <div class="box turizm"></div>
+                        </div>
+                        <div class="checkbox-detail-container">
+                            <input   type="checkbox" id="others-checkbox" onclick="newsCheckboxFunction()"> 
+                            <label id="othersLabel" >Others</label>
+                            <div class="box others"></div>
+                        </div>
+
+                        
+                    </div>
+
+                    
+                </div>
+                
+            </div>
+       </div>
+       
+       <div class="container-row-3">
+            <div class="recommendation">
+                <label style="font-weight: bold; font-size: 24px;" for="">Recommendation: </label>
+
+                <div id="recommendation-message">
+
+                </div>
+                <br>
+                <ul id="news-recommendations">
+
+                </ul>
+            </div>
+       </div>
+       
+       <script src="neovis.js" type="text/javascript"></script>
+       <script src="vis-network.min.js" type="text/javascript" ></script>
+       <script type="text/javascript" src="funcs.js"></script>
+       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+    </body>    
+</html>
