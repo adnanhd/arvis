@@ -1,2 +1,2 @@
 # nevis
-web-git at nevis.ceng.metu.edu.tr
+Article Visualized on the web at nevis.ceng.metu.edu.tr
