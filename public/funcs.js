@@ -134,12 +134,12 @@
         // initQuery=alterQuery(initQuery,"WHERE","a.category<>\"son-dakika\"" );
         var config = {
             container_id: "viz",
-            server_url: "bolt://144.122.71.70:8082",
+            server_url: "bolt://144.122.71.70:7686",
             server_user: "neo4j",
-            server_password: "neo4j%nevis",
+            server_password: "neo4j",
             labels: {
-                "News":{
-                    "caption":"Nid",
+                "Articles":{
+                    "caption":"Aid",
                     "community":"category",
                     "size":"EnCount"
                 },
